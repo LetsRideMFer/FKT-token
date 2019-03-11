@@ -7,7 +7,7 @@ contract FKTToken is ERC20 {
   string public symbol = 'FKT';
   uint8 public decimals = 18;
 
-  uint public INITIAL_SUPPLY = 30000000000;
+  uint public INITIAL_SUPPLY = 30000000000 * 10 ** uint(decimals);
 
   constructor() public {
     _mint(msg.sender, INITIAL_SUPPLY);

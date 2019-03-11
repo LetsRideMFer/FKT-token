@@ -30,7 +30,7 @@ contract('FKTToken', function(accounts) {
   it('should return inital token wei balance of 3*10^10', async function() {
     let ownerBalance = await contract.balanceOf.call(owner);
     ownerBalance = ownerBalance.toString();
-    assert.strictEqual(ownerBalance, 3e+10.toString());
+    assert.strictEqual(Number(ownerBalance), 3e+28);
   });
   it('should properly [transfer] token', async function() {
     let recipient = accounts[1];
@@ -40,13 +40,14 @@ contract('FKTToken', function(accounts) {
     
     let ownerBalance = await contract.balanceOf.call(owner);
     let recipientBalance = await contract.balanceOf.call(recipient);
-    assert.strictEqual(ownerBalance.toString(), '29999000000');
+    console.log(ownerBalance.toString());
+    assert.strictEqual(ownerBalance.toString(), '29999999999999999999999000000');
     assert.strictEqual(recipientBalance.toNumber(), tokenWei);
   });
   it('should properly return the [totalSupply] of tokens', async function() {
     let totalSupply = await contract.totalSupply.call();
     totalSupply = totalSupply.toString();
-    assert.strictEqual(totalSupply, 3e+10.toString());
+    assert.strictEqual(Number(totalSupply), 3e+28);
   });
   it('should [approve] token for [transferFrom]', async function() {
     let approver = owner;
